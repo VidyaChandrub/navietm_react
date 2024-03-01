@@ -1,0 +1,161 @@
+body{
+    font-family: 'Inter';
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.trigger{
+    padding: 0px 24px;
+    font-size: 18px;
+    line-height: 64px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.trigger:hover{
+    color:rgb(211, 211, 211);
+}
+
+.logo{
+    height: 32px;
+    margin: 16px;
+    background-color: rgb(255, 255, 255);
+}
+
+.ant-layout{
+    min-height: 100vh !important;
+    background-color: white !important;
+}
+.ant-layout .ant-layout-sider {
+    position: relative;
+    min-width: 0;
+    background: rgba(255, 254, 252, 1) !important;
+    transition: all 0.2s;
+    /* box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18); */
+    border:1px solid rgba(243, 243, 243, 1);
+
+}
+
+.ant-layout-sider{
+    flex: 0 0 20% !important;
+    max-width: 20% !important;
+    min-width: 20% !important;
+    width: 20% !important;
+    background-color: rgba(255, 254, 252, 1) !important;
+}
+.ant-layout-sider-collapsed{
+    flex: 0 0 99px !important;
+    max-width: 99px !important;
+    min-width: 99px !important;
+    width: 99px !important;
+    background: rgba(255, 254, 252, 1) !important;
+}
+
+.ant-menu-dark, .ant-menu .ant-menu-sub{
+    color: black !important;
+    background: rgba(255, 254, 252, 1) !important;
+}
+.ant-menu-dark .ant-menu-submenu-title{
+    color: black !important;
+}
+.ant-menu-dark .ant-menu-item {
+    color: black !important;
+}
+.ant-layout-sider-dark{
+    background-color: rgba(255, 254, 252, 1) !important;
+}
+
+
+.logo{
+    height: 64px;
+    position: relative;
+}
+
+.top-section .toggle-menu-btn{
+    color: White;
+    font-size: 10px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    cursor: pointer;
+    background-color: rgba(255, 188, 14, 1);
+    padding: 10px;
+    border-end-start-radius: 5px;
+    border-start-start-radius: 5px;
+    margin-bottom: 30px !important;
+}
+
+
+.ant-menu-dark .ant-menu-item-selected{
+    background-color: transparent !important;
+}
+
+.ant-input-outlined{
+    background: rgba(241, 242, 241, 0.5) !important;
+    border:0 !important;
+    color:grey !important;
+    border-radius: 5px !important;
+    width:351px;
+    height:40px;
+}
+
+p{
+    font-size: 14px !important;
+    font-weight: 400;
+}
+
+.ant-btn-default{
+    background-color: rgba(241, 242, 241, 0.5) !important;
+    border:0px;
+    color:grey !important;
+}
+.ant-btn-primary{
+    color:White;
+    background-color: rgba(51, 124, 232, 1) !important;
+    
+}
+
+header{
+    border:1px solid rgba(243, 243, 243, 1) !important;
+}
+
+main{
+    margin-top: 20px !important;
+}
+
+.header_margin{
+    margin-right: 3rem !important;
+}
+
+
+
+@media screen and (min-width: 412px) and (max-width: 768px){
+    .ant-layout-sider{
+        flex: 0 0 75% !important;
+        max-width: 75% !important;
+        min-width: 75% !important;
+        width: 75% !important;
+        background-color: rgba(255, 254, 252, 1) !important;
+        z-index: 2 !important;
+    }
+
+    .ant-layout-sider-collapsed{
+        flex: 0 0 99px !important;
+        max-width: 99px !important;
+        min-width: 99px !important;
+        width: 99px !important;
+        background: rgba(255, 254, 252, 1) !important;
+    }
+
+    .ant-input-outlined{
+        width:auto;
+        height:auto;
+    }
+
+    .header_margin{
+        margin-right: 0rem !important;
+    }
+}

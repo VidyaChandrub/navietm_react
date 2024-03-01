@@ -1,74 +1,73 @@
-import Tab from 'react-bootstrap/Tab';
-import Tabs from 'react-bootstrap/Tabs';
+
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import './TabsForm.css'
-import { useState } from 'react';
+import '../index.css'
+import React, { useState } from 'react';
 import { BsDiagram3 } from "react-icons/bs";
 import { TbSettingsStar } from "react-icons/tb";
 import { MdOutlinePublishedWithChanges } from "react-icons/md";
 import { RiFilePdf2Fill } from "react-icons/ri";
-
+import Settings from './Settings';
+import Navigation from './Navigation';
+import Publish from './Publish';
+import Button from 'react-bootstrap/Button';
+import Exportpdf from './Exportpdf';
 function TabsForm() {
     const [activeTab, setActiveTab] = useState('tab1');
 
     const handletabChange = (tab) =>{
         setActiveTab(tab);
     }
+    
+
   return (
-   <div className="tab-container">
+   <div className="tab-container" >
     <div className="tabs">
-        <button className={activeTab === 'tab1'? 'active-tab': ''}
+        <button className={activeTab === 'tab1'? 'active-tab': ''} 
         onClick={()=>handletabChange('tab1')}
         >
-            <TbSettingsStar size={20}/> Setting
+            <TbSettingsStar size={20}/> SETTING
         </button>
-        <button className={activeTab === 'tab2'? 'active-tab': ''}
+        <button className={activeTab === 'tab2'? 'active-tab2': 'navigation_btn'}
         onClick={()=>handletabChange('tab2')}
         >
-            <BsDiagram3 size={20}/> Navigation
+            <BsDiagram3 size={20}/> NAVIGATION
         </button>
-        <button className={activeTab === 'tab3'? 'active-tab': ''}
+        <button className={activeTab === 'tab3'? 'active-tab3': 'publish_btn'}
         onClick={()=>handletabChange('tab3')}
         >
-            <MdOutlinePublishedWithChanges size={20}/> Publish
+            <MdOutlinePublishedWithChanges size={20}/> PUBLISH
         </button>
-        <button className={activeTab === 'tab4'? 'active-tab': ''}
+        <button className={activeTab === 'tab4'? 'active-tab4': 'export_pdf'}
         onClick={()=>handletabChange('tab4')}
         >
-            <RiFilePdf2Fill size={20}/> Export PDF
+            <RiFilePdf2Fill size={20}/> EXPORT PDF
         </button>
     </div>
     <div className="card-container">
-        <div className="card">
+        <div className={activeTab ? 'card' : ''}>
         {activeTab === 'tab1' && (
-            <div>
-                <h2>Setting</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste tempore veniam expedita debitis id! Nihil cum exercitationem fugiat nesciunt facere dolores quasi, eum consequatur, perferendis doloribus natus modi ipsa dicta.
-                </p>
+            <div className='card-one'>
+                <Settings />
             </div>
         )}
 
         {activeTab === 'tab2' && (
-            <div>
-                <h2>Setting</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste tempore veniam expedita debitis id! Nihil cum exercitationem fugiat nesciunt facere dolores quasi, eum consequatur, perferendis doloribus natus modi ipsa dicta.
-                </p>
+            <div className='card-nav'>
+                <Navigation/>
             </div>
         )}
 
         {activeTab === 'tab3' && (
-            <div>
-                <h2>Setting</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste tempore veniam expedita debitis id! Nihil cum exercitationem fugiat nesciunt facere dolores quasi, eum consequatur, perferendis doloribus natus modi ipsa dicta.
-                </p>
+            <div className='card-publish'>
+                <Publish />
+
             </div>
         )}
 
         {activeTab === 'tab4' && (
-            <div>
-                <h2>Pdf</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste tempore veniam expedita debitis id! Nihil cum exercitationem fugiat nesciunt facere dolores quasi, eum consequatur, perferendis doloribus natus modi ipsa dicta.
-                </p>
+            <div className='card-pdf'>
+                <Exportpdf />
             </div>
         )}
         </div>
@@ -80,22 +79,3 @@ function TabsForm() {
 
 export default TabsForm;
 
-{/* <Tabs
-defaultActiveKey="Setting"
-id="justify-tab-example"
-className="mb-3"
-justify
->
-<Tab className='setting' eventKey="setting" title="Setting">
-  Tab content for Home
-</Tab>
-<Tab eventKey="navigation" title="Navigation">
-  Tab content for Profile
-</Tab>
-<Tab eventKey="publish" title="Publish">
-  Tab content for Loooonger Tab
-</Tab>
-<Tab eventKey="export" title="Export Pdf">
-  Tab content for Contact
-</Tab>
-</Tabs> */}

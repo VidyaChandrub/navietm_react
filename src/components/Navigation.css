@@ -1,0 +1,72 @@
+
+.card{
+    background-color: rgba(241, 242, 241, 0.5) !important;
+    border: 1px !important;
+    
+}
+
+.file_Count{
+    text-align: start !important;
+    color: green !important;
+}
+.upload_btn{
+
+}
+
+.add-btn{
+    font-size: 14px;
+    line-height: 1.5714285714285714;
+    height: auto !important;
+    padding: 4px 10px;
+    border-radius: 6px;
+    right: 50px !important;
+    width: 119px !important;
+}
+
+.list-type{
+    list-style-type: none !important;
+}
+
+.list-type:not(:first-child){
+    font-weight: bold !important;
+}
+
+.export-pdf{
+
+    background-color: rgba(51, 124, 232, 1) !important;
+    color: white !important;
+    /* width: 25% !important; */
+    
+}
+
+.btn-primary{
+    background-color: rgba(51, 124, 232, 1) !important;
+    width:128px !important;
+}
+
+.btn-outline-primary{
+    border:1px solid rgba(51, 124, 232, 1) !important;
+    width:128px !important;
+}
+
+.ant-upload-wrapper.ant-upload-picture-card-wrapper .ant-upload.ant-upload-select >.ant-upload{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    height: auto !important;
+}
+@media screen and (min-width: 412px) and (max-width: 768px){
+.mobile_view{
+    display: block !important;
+}
+
+.add-btn{
+    right: 0px !important;
+    text-align: center !important;
+}
+
+/* .mobile_view_btns{
+    width: 110px !important;
+} */
+}
