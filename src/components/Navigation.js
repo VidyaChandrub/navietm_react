@@ -6,10 +6,11 @@ import '../index.css';
 import { CgSearch } from "react-icons/cg";
 import { Form, Input, Radio, } from 'antd';
 import Button from 'react-bootstrap/Button';
-import { DndContext, KeyboardSensor, PointerSensor, TouchSensor, closestCorners, useSensor, useSensors } from '@dnd-kit/core'
+// import { DndContext, KeyboardSensor, PointerSensor, TouchSensor, closestCorners, useSensor, useSensors } from '@dnd-kit/core'
 import List from './pages/List';
 import Dropfiles from './pages/Dropfiles'
-import { arrayMove, sortableKeyboardCoordinates } from '@dnd-kit/sortable';
+import { Draggable, Droppable } from 'react-drag-and-drop';
+// import { arrayMove, sortableKeyboardCoordinates } from '@dnd-kit/sortable';
 
 
 const MyFormItemContext = React.createContext([]);
@@ -21,6 +22,7 @@ const MyFormItemGroup = ({ prefix, children }) => {
   const concatPath = React.useMemo(() => [...prefixPath, ...toArr(prefix)], [prefixPath, prefix]);
   return <MyFormItemContext.Provider value={concatPath}>{children}</MyFormItemContext.Provider>;
 };
+
 
 const Navigation = ({ onNext, onPrev }) => {
 
@@ -35,11 +37,11 @@ const Navigation = ({ onNext, onPrev }) => {
     setValue(e.target.value);
   };
 
+  
 
+  // const [tasks, setItems] = useState([{ id: 1, title: 'Demo1 xml' }, { id: 2, title: 'Demo1 xml' }, { id: 3, title: 'Demo1 xml' }]);
 
-  const [tasks, setItems] = useState([{ id: 1, title: 'Demo1 xml' }, { id: 2, title: 'Demo1 xml' }, { id: 3, title: 'Demo1 xml' }]);
-
-  const getTaskPos = id => tasks.findIndex(task => task.id === id);
+  // const getTaskPos = id => tasks.findIndex(task => task.id === id);
 
   // const handleDragEnd = (event) => {
   //   const {active, over} = event;
@@ -54,31 +56,31 @@ const Navigation = ({ onNext, onPrev }) => {
   //   });
   // };
 
-  const sensors = useSensors(
-    useSensor(PointerSensor),
-    useSensor(TouchSensor),
-    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates, })
+  // const sensors = useSensors(
+  //   useSensor(PointerSensor),
+  //   useSensor(TouchSensor),
+  //   useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates, })
 
-  );
+  // );
 
-  //const [parent, setParent] = useState([{id:1, title:'Demo1 xml'},{id:2, title:'Demo1 xml'}, {id:3, title:'Demo1 xml'} ]);
-  const [parent, setParent] = useState(null);
-  const draggable = (
-    <List id="draggable">
-      Demo1 xml
-    </List>
-  );
+  // //const [parent, setParent] = useState([{id:1, title:'Demo1 xml'},{id:2, title:'Demo1 xml'}, {id:3, title:'Demo1 xml'} ]);
+  // const [parent, setParent] = useState(null);
+  // const draggable = (
+  //   <List id="draggable">
+  //     Demo1 xml
+  //   </List>
+  // );
 
-  function handleDragEnd({ over }) {
-    setParent(over ? over.id : null);
-  }
+  // function handleDragEnd({ over }) {
+  //   setParent(over ? over.id : null);
+  // }
   
 
   return (
     <div className='container p-5'>
       <p className='file_Count'>100 XML files available</p>
 
-      <DndContext onDragEnd={handleDragEnd}>
+      {/* <DndContext onDragEnd={handleDragEnd}> */}
         <div className='row d-flex justify-content-between'>
           <div className='col-lg-6 col-sm-12 col-12'>
             <div className='card'>
@@ -95,19 +97,19 @@ const Navigation = ({ onNext, onPrev }) => {
                 </MyFormItemGroup>
               </Form>
 
-              {!parent ? draggable : null}
+              {/* {!parent ? draggable : null} */}
 
             </div>
           </div>
           <div className='col-lg-6 col-sm-12 col-12'>
             <div className='card text-center m-auto p-5' style={{ height: 355 }}  >
-              <Dropfiles id="droppable" className=''>
+              {/* <Dropfiles id="droppable" className=''>
                 {parent === "droppable" ? draggable : 'Drag and Drop the XML files here'}
-              </Dropfiles>
+              </Dropfiles> */}
             </div>
           </div>
         </div>
-      </DndContext>
+      {/* </DndContext> */}
       {/* <DndContext sensors={sensors} onDragEnd={handleDragEnd} collisionDetection={closestCorners}>
               
             <List tasks={tasks}/>
