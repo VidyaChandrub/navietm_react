@@ -1,3 +1,15 @@
+ .list-group-item:hover{
+    background-color: rgba(242, 242, 242, 1) !important;
+    border: 1px solid rgba(216, 216, 216, 1) !important;
+    cursor: pointer !important;
+}
+
+.list-group-item{
+    background-color: transparent !important;
+    border: 0px solid transparent !important;
+    cursor: pointer !important;
+    
+}
 
 .card{
     background-color: rgba(241, 242, 241, 0.5) !important;

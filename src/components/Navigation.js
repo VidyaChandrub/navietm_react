@@ -23,9 +23,22 @@ const MyFormItemGroup = ({ prefix, children }) => {
   return <MyFormItemContext.Provider value={concatPath}>{children}</MyFormItemContext.Provider>;
 };
 
+const SearchAndDragDropComponent = ({ data,  onNext, onPrev }) => {
+  const [query, setQuery] = useState('');
+  const [droppedItems, setDroppedItems] = useState([]);
 
-const Navigation = ({ onNext, onPrev }) => {
+  const handleInputChange = (e) => {
+    setQuery(e.target.value);
+  };
 
+  const handleDrop = (data) => {
+    const droppedItem = data['item'];
+    setDroppedItems([...droppedItems, droppedItem]);
+  };
+
+  const filteredData = data.filter((item) =>
+    item.toLowerCase().includes(query.toLowerCase())
+  );
 
   const onFinish = (value) => {
     console.log(value);
@@ -37,47 +50,9 @@ const Navigation = ({ onNext, onPrev }) => {
     setValue(e.target.value);
   };
 
-  
-
-  // const [tasks, setItems] = useState([{ id: 1, title: 'Demo1 xml' }, { id: 2, title: 'Demo1 xml' }, { id: 3, title: 'Demo1 xml' }]);
-
-  // const getTaskPos = id => tasks.findIndex(task => task.id === id);
-
-  // const handleDragEnd = (event) => {
-  //   const {active, over} = event;
-
-  //   if( active.id === over.id) return;
-
-  //   setItems(tasks => {
-  //     const originalPos = getTaskPos(active.id)
-  //     const newPos = getTaskPos(over.id);
-
-  //     return arrayMove(tasks, originalPos, newPos)
-  //   });
-  // };
-
-  // const sensors = useSensors(
-  //   useSensor(PointerSensor),
-  //   useSensor(TouchSensor),
-  //   useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates, })
-
-  // );
-
-  // //const [parent, setParent] = useState([{id:1, title:'Demo1 xml'},{id:2, title:'Demo1 xml'}, {id:3, title:'Demo1 xml'} ]);
-  // const [parent, setParent] = useState(null);
-  // const draggable = (
-  //   <List id="draggable">
-  //     Demo1 xml
-  //   </List>
-  // );
-
-  // function handleDragEnd({ over }) {
-  //   setParent(over ? over.id : null);
-  // }
-  
-
   return (
-    <div className='container p-5'>
+    <div>
+      <div className='container p-5'>
       <p className='file_Count'>100 XML files available</p>
 
       {/* <DndContext onDragEnd={handleDragEnd}> */}
@@ -87,7 +62,8 @@ const Navigation = ({ onNext, onPrev }) => {
 
               <Form name="form_item_path" layout="" onFinish={onFinish} className='d-flex justify-content-between mobile_view gap-2  m-5'>
                 <MyFormItemGroup className='me-5'>
-                  <Input size="large" placeholder="Search file" suffix={<CgSearch />} style={{ background: 'rgba(239, 239, 239, 1)' }} />
+                  <Input size="large" placeholder="Search file" suffix={<CgSearch />} style={{ background: 'rgba(239, 239, 239, 1)' }} value={query}
+        onChange={handleInputChange} />
                 </MyFormItemGroup>
                 <MyFormItemGroup >
                   <Radio.Group onChange={onChange} value={value} className='d-flex align-items-center'>
@@ -98,6 +74,13 @@ const Navigation = ({ onNext, onPrev }) => {
               </Form>
 
               {/* {!parent ? draggable : null} */}
+              <ul className='list-group list-group-flush  px-5'>
+        {filteredData.map((item, index) => (
+          <Draggable key={index} type="item" data={item}>
+            <li className='list-group-item'>{item}</li>
+          </Draggable>
+        ))}
+      </ul>
 
             </div>
           </div>
@@ -106,6 +89,18 @@ const Navigation = ({ onNext, onPrev }) => {
               {/* <Dropfiles id="droppable" className=''>
                 {parent === "droppable" ? draggable : 'Drag and Drop the XML files here'}
               </Dropfiles> */}
+              <Droppable
+        types={['item']}
+        onDrop={handleDrop}>
+        <div className="droppable-area">
+          <p>Drag and Drop the XML files here</p>
+          <ul className='list-group list-group-flush'>
+            {droppedItems.map((item, index) => (
+              <li className='list-group-item' key={index}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </Droppable>
             </div>
           </div>
         </div>
@@ -122,8 +117,21 @@ const Navigation = ({ onNext, onPrev }) => {
         </div>
       </div>
     </div>
-
+      
+    </div>
   );
+};
+
+const Navigation = ({ }) => {
+  
+  const data = ['Apple', 'Banana', 'Orange', 'Mango', 'Pineapple'];
+
+    return (
+      <div>
+        {/* <h2>Search and Drag-and-Drop Example</h2> */}
+        <SearchAndDragDropComponent data={data} />
+      </div>
+    );
 
 }
 
