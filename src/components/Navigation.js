@@ -23,7 +23,7 @@ const MyFormItemGroup = ({ prefix, children }) => {
   return <MyFormItemContext.Provider value={concatPath}>{children}</MyFormItemContext.Provider>;
 };
 
-const SearchAndDragDropComponent = ({ data,  onNext, onPrev }) => {
+const SearchAndDragDropComponent = ({ data }) => {
   const [query, setQuery] = useState('');
   const [droppedItems, setDroppedItems] = useState([]);
 
@@ -109,29 +109,36 @@ const SearchAndDragDropComponent = ({ data,  onNext, onPrev }) => {
               
             <List tasks={tasks}/>
             </DndContext> */}
-      <div className='row mt-5'>
-        <div className="d-flex justify-content-end gap-2">
-          <Button as="input" variant="outline-primary" type="reset" value="Reset" className='text-dark'  onClick={onPrev}/>{' '}
-          <Button as="input" type="submit" value="Next" className='text-white' onClick={onNext}/>
-  
-        </div>
-      </div>
+      
     </div>
       
     </div>
   );
 };
 
-const Navigation = ({ }) => {
+const Navigation = ({onNext, onPrev}) => {
   
-  const data = ['Apple', 'Banana', 'Orange', 'Mango', 'Pineapple'];
+  const data = ['Demo1 xml', 'Demo1 xml', 'Demo1 xml', 'Demo1 xml', 'Demo1 xml'];
 
     return (
       <div>
         {/* <h2>Search and Drag-and-Drop Example</h2> */}
         <SearchAndDragDropComponent data={data} />
+
+
+        <div className='row mt-5'>
+        <div className="d-flex justify-content-end gap-2">
+          <Button as="input" variant="outline-primary" type="reset" value="Reset" className='text-dark'  onClick={onPrev}/>{' '}
+          <Button as="input" type="submit" value="Next" className='text-white' onClick={onNext}/>
+  
+        </div>
       </div>
+      </div>
+
+
+
     );
+  
 
 }
 

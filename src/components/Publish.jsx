@@ -7,6 +7,7 @@ import template from "../components/assets/template.png"
 import Button from 'react-bootstrap/Button';
 import '../index.css'
 import '../components/Navigation.css'
+import '../components/publish.css'
 
 const normFile = (e) => {
   if (Array.isArray(e)) {
@@ -47,7 +48,20 @@ const Publish = ({ onNext, onPrev }) => {
             <MyFormItemGroup prefix={['user']}>
               <MyFormItemGroup prefix={['name']}>
                 <MyFormItem name="file" label="Homepage Template" className='fw-bold'>
-                  <Input placeholder='html file' className='mb-3 input-container ' />
+                  <div class="upload-wrapper">
+                    <div class="upload drop-area">
+                      <div class="upload-info">
+
+                        <span class="upload-filename inactive drop-text">No file selected</span>
+                      </div>
+                      <button class="upload-button">
+                        <input type="file" id="file" onchange="uploadFile()" />
+                        <label for="file" class="upload-button-text">Choose file</label>
+                      </button>
+                      <div class="upload-hint">Uploading...</div>
+                      <div class="upload-progress"></div>
+                    </div>
+                  </div>
                   <Input placeholder='images folder' className='input-container' width={351} />
                   <p className='text-secondary pt-2 '>(video, pdf, 3D file accepted *)</p>
 
